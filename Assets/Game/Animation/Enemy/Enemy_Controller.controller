@@ -45,7 +45,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: fac6c27238b18564ebef657ffbc882c6, type: 2}
+  m_Motion: {fileID: 7400000, guid: 8be3098e057cdaf45853138edbaac704, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -71,7 +71,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: f631db53f2e25134ba2ea5632e308bbe, type: 2}
+  m_Motion: {fileID: 7400000, guid: 42c2be144ad310e4eba5e9afb5650b3a, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -233,7 +233,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Square
+  m_Name: Enemy_Controller
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: atack
@@ -264,7 +264,7 @@ AnimatorController:
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: idle
     m_Type: 9
@@ -311,7 +311,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 77a9652719990234197b1ec955e06965, type: 2}
+  m_Motion: {fileID: 7400000, guid: bf51fe8732907ef4c85b7c3ebe6d1f1d, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -485,7 +485,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 264d89f542fcfb94c9496be7e7bf029b, type: 2}
+  m_Motion: {fileID: 7400000, guid: 1728335be6caf51438a0f6b45f3dbd74, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

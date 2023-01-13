@@ -3,14 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
     [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Animator anim;
+    
     [SerializeField] private LayerMask GroundLayer;
     [SerializeField] private float speed = 100;
+    [SerializeField] private Kunai kunaiFrefab;
+    [SerializeField] private Transform kunaiPoint;
 
-   
     [SerializeField] private float jumpForce = 350;
 
     private bool isGround = true;
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
     {
         
         SavePoint();
-        OnInit();
+      
     }
 
     // Update is called once per frame
@@ -97,15 +98,25 @@ public class Player : MonoBehaviour
             }
         
     }
-    public void OnInit()
+    public override void OnInit()
     {
+        base.OnInit();
         isDeath = false;
         isAtack = false;
 
         transform.position = savePoint;
         ChangAnim("idle");
     }
-   
+    public override void OnDespawn()
+    {
+        base.OnDespawn();
+    }
+    protected override void OnDeath()
+    {
+        base.OnDeath();
+        OnInit();
+    }
+
     private bool CheckGround()
     {
         Debug.DrawLine(transform.position, transform.position + Vector3.down * 1.1f, Color.blue);
@@ -131,6 +142,7 @@ public class Player : MonoBehaviour
         ChangAnim("throw");
         isAtack = true;
         Invoke(nameof(ResetAtack), 0.5f);
+        Instantiate(kunaiFrefab, kunaiPoint.position, kunaiPoint.rotation);
     }
     private void Jump()
     {
@@ -139,15 +151,7 @@ public class Player : MonoBehaviour
         ChangAnim("jump");
         rb.AddForce(jumpForce * Vector2.up);
     }
-    private void ChangAnim(string animName)
-    {
-        if (curenAnim != animName)
-        {
-            anim.ResetTrigger(animName);
-            curenAnim = animName;
-            anim.SetTrigger(curenAnim);
-        }
-    }
+
     private void ResetAtack()
     {
         isAtack = false;
@@ -157,7 +161,7 @@ public class Player : MonoBehaviour
     {
         savePoint = transform.position;
     }
-
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Coin")
