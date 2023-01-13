@@ -18,7 +18,8 @@ public class PatrolState : IState
         {
             enemy.Moving();
         }
-       
+
+        timer += Time.deltaTime;
         else
         {
             enemy.ChangState(new IldeState());

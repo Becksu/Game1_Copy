@@ -18,6 +18,7 @@ public class Player : Character
     private bool isJump = false;
     private bool isAtack = false;
     private bool isDeath = false;
+    [SerializeField] private bool isThrow = false;
     private float horizontal;
     private string curenAnim;
     private int coin = 0;
@@ -90,7 +91,7 @@ public class Player : Character
                 //transform.localScale = new Vector3(horizontal,1,1);
                 transform.rotation = Quaternion.Euler(new Vector3(0, horizontal > 0 ? 0 : 180, 0));
             }
-        else if (isGround)
+        else if (isGround && !isThrow)
             {
                 ChangAnim("idle");
 
@@ -139,10 +140,22 @@ public class Player : Character
     }
     private void Throw()
     {
+        if(isThrow  == true)
+        {
+            return;
+        }
+        isThrow = true;
         ChangAnim("throw");
         isAtack = true;
-        Invoke(nameof(ResetAtack), 0.5f);
+        Debug.Log("throw");  
+        Invoke(nameof(ResetAtack), 0.8f);
+        Invoke(nameof(OnThrowFinished), 0.8f);
         Instantiate(kunaiFrefab, kunaiPoint.position, kunaiPoint.rotation);
+    }
+
+    private void OnThrowFinished()
+    {
+        isThrow = false;
     }
     private void Jump()
     {
@@ -154,6 +167,7 @@ public class Player : Character
 
     private void ResetAtack()
     {
+        Debug.Log("Reset attafck");
         isAtack = false;
         ChangAnim("idle");
     }

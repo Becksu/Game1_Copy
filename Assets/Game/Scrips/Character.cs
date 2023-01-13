@@ -29,6 +29,7 @@ public class Character : MonoBehaviour
     }
     protected void ChangAnim(string animName)
     {
+        Debug.Log(animName);
         if (curenAnim != animName)
         {
             anim.ResetTrigger(animName);

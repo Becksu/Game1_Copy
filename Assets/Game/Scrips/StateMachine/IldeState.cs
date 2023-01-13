@@ -15,7 +15,7 @@ public class IldeState : IState
     }
     public void OnExecute(Enemy enemy)
     {
-        if(timer > randomtime)
+        if(timer < randomtime)
         {
             enemy.ChangState(new PatrolState());
         }
